@@ -21,11 +21,10 @@ defmodule Darksky do
   end
 
   def run do
-    response = fetch(55.826 ,-4.257, %{lang: "en", units: "si"})
+    response = fetch(55.826 ,-4.257, %{lang: "en", units: "auto"})
     {:ok, unixt} = DateTime.from_unix(response["currently"]["time"])
     time = DateTime.to_string(unixt)
-    IO.puts("The current weather right now is #{response["currently"]["summary"]}\n
-    with a temperature of #{response["currently"]["temperature"]} at #{time}")
+    IO.puts("The weather right now is #{response["currently"]["summary"]} with a temperature of #{response["currently"]["temperature"]} at #{time}")
   end
 
 
